@@ -1,0 +1,54 @@
+<div class="col-lg-8">
+ <h2><b>Tabel DTS VSGA 2021</b></h2>
+ <p>Tampil Data dari Data Base</p>
+ <a href="tambah_brg_tlr.php" ><button>tambah</button></a>
+ 
+ <table class="table">
+ <thead class="thead-dark">
+ <tr>
+ <th>id</th>
+ <th>Berat</th>
+ <th>grade</th>
+ <th>Tanggal</th>
+ <th></th>
+ <th></th>
+ <th></th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php
+ include 'koneksi.php';
+ $sql = "SELECT * FROM brg_telur";
+ $hasil = mysqli_query($conn,$sql);
+ $nomer = 1;
+ while($data = mysqli_fetch_array($hasil,MYSQLI_ASSOC)){
+ ?>
+ <tr>
+ <td><?php echo "<tr>"; ?></td>
+ <td><?php echo $data['berat']; ?></td>
+ <td><?php echo $data['gread']; ?></td>
+ <td><?php echo $data['tanggal']; ?></td>
+ <td>
+ <a class="btn btn-warning" href="edit.php?id=<?php echo $data['id_telur']; 
+?>"><button>edit</button></a>
+ <a class="btn btn-danger" href="hps_brg_telur.php?id=<?php echo $data['id_telur']; 
+?>"><button>hapus</button></a>
+ </td>
+ </tr>
+ 
+ <?php 
+ }
+ ?>
+ </tbody>
+ </table>
+ 
+</div>
+</br></br>
+</body>
+ 
+<script src="assets/js/jquery.js"></script> 
+<script src="assets/js/popper.js"></script> 
+<script src="assets/js/bootstrap.js"></script>
+</body> 
+</html>
